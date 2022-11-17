@@ -94,6 +94,10 @@ public class BinarySearchSetTest {
     @Test
     void remove() {
         BinarySearchSet<Integer> set = new BinarySearchSet<>();
+        assertFalse(set.remove(5));
+        set.add(5);
+        assertTrue(set.remove(5));
+
         Integer[] arr = {1, 4, 6, 3, 10, 44, 65};
         List<Integer> list = Arrays.asList(arr);
         set.addAll(list);

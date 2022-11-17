@@ -1,0 +1,12 @@
+Timing of contains() on BinarySearchSet,size (N),time (ns)
+trial, 1024, 395.380000
+trial, 2048, 236.903000
+trial, 4096, 252.075000
+trial, 8192, 221.876000
+trial, 16384, 193.573000
+trial, 32768, 269.638000
+trial, 65536, 217.829000
+trial, 131072, 321.404000
+trial, 262144, 377.601000
+trial, 524288, 969.996000
+trial, 1048576, 674.114000

@@ -1,36 +1,40 @@
-package assignment03;
+package assignment04;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
-public class timingAdd {
+import static assignment04.QuickSort.generateWorstCase;
+
+public class timingQuickSort {
     private static final int ITER_COUNT = 1000;
 
     public static void main(String[] args) {
-        try (FileWriter fw = new FileWriter("addTime.csv", false)) { // open up a file writer, so we can write
-            // to file.
-            fw.write("Timing of add() on BinarySearchSet,size (N),time (ns)");
-            fw.write(System.getProperty( "line.separator" ));
+        try (FileWriter fw = new FileWriter("quickSort.csv", false)) {
+            fw.write("Timing of quickSort,size (N),time (ns)");
+            fw.write(System.getProperty("line.separator"));
+
+
             Random random = new Random();
             for (int exp = 10; exp <= 20; exp++) { // This is used as the exponent to calculate the size of the set.
                 int size = (int) Math.pow(2, exp); // or ..
 
+//                ArrayList<Integer> bestCase = generateBestCase(size);
+//                ArrayList<Integer> averageCase = generateAverageCase(size);
+                ArrayList<Integer> worstCase = generateWorstCase(size);
+
+
                 // Do the experiment multiple times, and average out the results
                 long totalTime = 0;
-// SET UP!
-                BinarySearchSet<Integer> set = new BinarySearchSet<Integer>();
-                for (int i = 0; i < size; i++) {
-                    set.add(i);
-                }
+                // SET UP!
                 for (int iter = 0; iter < ITER_COUNT; iter++) {
                     System.nanoTime();
-                    int addedElement = random.nextInt(size); // This gets me a random int between 0 and size;
-                    set.remove(addedElement);
 
                     // TIME IT!
                     long start = System.nanoTime();
-                    set.add(addedElement);
+                    QuickSort.sort(worstCase);
+//                    Collections.sort(bestCase);
                     long stop = System.nanoTime();
                     totalTime += stop - start;
                 }

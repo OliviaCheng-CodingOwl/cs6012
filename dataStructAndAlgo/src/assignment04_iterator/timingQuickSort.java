@@ -1,14 +1,14 @@
-package assignment04;
+package assignment04_iterator;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static assignment04.QuickSort.generateWorstCase;
+import static assignment04_iterator.QuickSort.generateWorstCase;
 
 public class timingQuickSort {
-    private static final int ITER_COUNT = 1000;
+    private static final int ITER_COUNT = 10;
 
     public static void main(String[] args) {
         try (FileWriter fw = new FileWriter("quickSort.csv", false)) {
@@ -17,7 +17,7 @@ public class timingQuickSort {
 
 
             Random random = new Random();
-            for (int exp = 10; exp <= 20; exp++) { // This is used as the exponent to calculate the size of the set.
+            for (int exp = 15; exp <= 20; exp++) { // This is used as the exponent to calculate the size of the set.
                 int size = (int) Math.pow(2, exp); // or ..
 
 //                ArrayList<Integer> bestCase = generateBestCase(size);

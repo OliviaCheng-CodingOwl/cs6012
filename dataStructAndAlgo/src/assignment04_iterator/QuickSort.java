@@ -1,6 +1,8 @@
-package assignment04;
+package assignment04_iterator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class QuickSort {
 
@@ -9,6 +11,7 @@ public class QuickSort {
     }
 
     private static <T extends Comparable<? super T>> void swap(ArrayList<T> a, int i, int j) {
+        if (i == j) return;
         T t = a.get(i);
         a.set(i, a.get(j));
         a.set(j, t);

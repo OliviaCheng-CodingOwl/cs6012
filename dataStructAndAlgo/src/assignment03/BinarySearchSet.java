@@ -26,12 +26,18 @@ public class BinarySearchSet<E> implements SortedSet<E>, Iterable<E> {
 
     @Override
     public E first() throws NoSuchElementException {
+        if (this.data.length == 0 || last == 0) {
+            throw new NoSuchElementException("data is empty");
+        }
         return this.data[0];
     }
 
     @Override
     public E last() throws NoSuchElementException {
-        return this.data[capacity - 1];
+        if (this.data.length == 0 || last == 0) {
+            throw new NoSuchElementException("data is empty");
+        }
+        return this.data[last - 1];
     }
 
     /**
@@ -129,16 +135,11 @@ public class BinarySearchSet<E> implements SortedSet<E>, Iterable<E> {
     public boolean addAll(Collection<? extends E> elements) {
         int count = 0;
         for (E e : elements) {
-            if (!contains(e)) {
-                add(e);
+            if (add(e)) {
                 count++;
             }
         }
-        if (count > 0) {
-            return true;
-        } else {
-            return true;
-        }
+        return count > 0;
     }
 
     @Override
